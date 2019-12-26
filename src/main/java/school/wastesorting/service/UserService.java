@@ -10,7 +10,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public void createTwo(){
     }
 }

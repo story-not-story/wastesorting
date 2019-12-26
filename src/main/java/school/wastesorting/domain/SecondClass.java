@@ -15,7 +15,7 @@ public class SecondClass {
     private Integer id;
     @Column(name = "first_id")
     @JsonProperty(value = "parent_id")
-    private Integer parent_id;
+    private Integer parentId;
     @Column(name = "second_class_name")
     @JsonProperty(value = "name")
     private String name;

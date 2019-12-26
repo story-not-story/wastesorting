@@ -1,6 +1,5 @@
 package school.wastesorting.controller;
 
-import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,27 +21,35 @@ public class UserController {
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
-
-    @RequestMapping(value = "/register", method = RequestMethod.POST, consumes = "application/json")
+    @PostMapping(value = "/register", consumes = "application/json")
     public Result<User> register(@RequestBody User user){
         logger.info("register");
+        User user1 = userRepository.findByName(user.getName());
+        if (user1 != null) {
+            return ResultUtil.fail(ErrorCode.USER_EXISTS);
+        }
         user.setFlag(0);
+        if (user.getFlag() != null) {
+            user.setFlag(user.getFlag());
+        }
         user.setName(user.getName());
         user.setPassword(user.getPassword());
-        return ResultUtil.success(userRepository.save(user));
+        userRepository.save(user);
+        return ResultUtil.success();
     }
 
-    @GetMapping("/login")
-    public Result<User> Login(@RequestBody User user){
+    @PostMapping(value = "/login", consumes = "application/json")
+    public Result<User> login(@RequestBody User user){
         logger.info("login");
-        User true_user;
-        true_user = userRepository.findByName(user.getName());
-        if(true_user == null)
+        User trueUser = userRepository.findByName(user.getName());
+        if(trueUser == null) {
             return ResultUtil.fail(ErrorCode.USER_NOT_FOUND);
-        else if(!true_user.getPassword().equals(user.getPassword()))
+        }
+        else if(!trueUser.getPassword().equals(user.getPassword())) {
             return ResultUtil.fail(ErrorCode.PASSWORD_ERROR);
-        else
-            return ResultUtil.success(ErrorCode.SUCCESS);
+        }
+        else {
+            return ResultUtil.success();
+        }
     }
-
 }

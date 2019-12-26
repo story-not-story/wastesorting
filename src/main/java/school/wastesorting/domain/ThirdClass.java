@@ -18,9 +18,9 @@ public class ThirdClass {
     private String name;
     @Column(name = "second_id")
     @JsonProperty(value = "parent_id")
-    private Integer parent_id;
+    private Integer parentId;
     @Column(name = "pic_addr")
     @JsonProperty(value = "pic_addr")
-    private String pic_addr;
+    private String picAddr;
 }
 

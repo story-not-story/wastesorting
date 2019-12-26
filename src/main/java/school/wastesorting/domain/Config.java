@@ -11,7 +11,7 @@ import javax.persistence.*;
 public class Config {
     @Id
     @GeneratedValue
-    @Column(name = "second_id")
+    @Column(name = "id")
     private Integer id;
     @Column(name = "configuration_value")
     @JsonProperty(value = "config_value")
