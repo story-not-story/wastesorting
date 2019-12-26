@@ -17,8 +17,8 @@ public class ClassificationController {
     @Autowired
     private ThirdClassRepository thirdClassRepository;
 
-    @PostMapping(value = "/class", consumes = "application/json")
-    public Result<JSONObject> getFirstClass(@RequestBody Integer id){
+    @GetMapping(value = "/class")
+    public Result<JSONObject> getFirstClass(@RequestParam(value = "id") Integer id){
         return classificationService.getFirstClass(id);
     }
 
@@ -32,8 +32,8 @@ public class ClassificationController {
         return ResultUtil.success();
     }
 
-    @PostMapping(value = "/search", consumes = "application/json")
-    public Result<JSONObject> search(@RequestBody String name){
+    @GetMapping(value = "/search")
+    public Result<JSONObject> search(@RequestParam(value = "name") String name){
         return classificationService.search(name);
     }
 }

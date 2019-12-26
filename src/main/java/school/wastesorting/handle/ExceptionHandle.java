@@ -26,6 +26,7 @@ public class ExceptionHandle {
             return ResultUtil.fail(((UserException) e).getCode(), e.getMessage());
         }
         logger.error(e.getMessage());
+        e.printStackTrace();
         return ResultUtil.fail(ErrorCode.UNKNOWN_ERROR);
     }
 }
