@@ -17,10 +17,10 @@ public class ThirdClass {
     @JsonProperty(value = "name")
     private String name;
     @Column(name = "second_id")
-    @JsonProperty(value = "parent_id")
+    @JsonProperty(value = "parentId")
     private Integer parentId;
     @Column(name = "pic_addr")
-    @JsonProperty(value = "pic_addr")
+    @JsonProperty(value = "picAddr")
     private String picAddr;
 }
 

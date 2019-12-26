@@ -14,6 +14,6 @@ public class Config {
     @Column(name = "id")
     private Integer id;
     @Column(name = "configuration_value")
-    @JsonProperty(value = "config_value")
+    @JsonProperty(value = "configValue")
     private String value;
 }
