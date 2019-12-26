@@ -1,0 +1,26 @@
+package school.wastesorting.domain;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+
+import javax.persistence.*;
+
+@Table(name = "third_class")
+@Data
+@Entity
+public class ThirdClass {
+    @Id
+    @GeneratedValue
+    @Column(name = "third_id")
+    private Integer id;
+    @Column(name = "object_name")
+    @JsonProperty(value = "name")
+    private String name;
+    @Column(name = "second_id")
+    @JsonProperty(value = "parent_id")
+    private Integer parent_id;
+    @Column(name = "pic_addr")
+    @JsonProperty(value = "pic_addr")
+    private String pic_addr;
+}
+

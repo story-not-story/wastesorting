@@ -7,5 +7,6 @@ import school.wastesorting.domain.User;
 
 public interface UserRepository  extends JpaRepository<User, Integer> {
     @Query(value = "from User where name = :name")
-    User findByName(@Param(value = "size") String name);
+    User findByName(@Param(value = "name") String name);
+
 }
