@@ -21,12 +21,14 @@ public class UserController {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public Result<User> create(User user){
-        logger.info("create");
+    @RequestMapping(value = "/register", method = RequestMethod.POST, consumes = "application/json")
+    public Result<User> register(@RequestBody User user){
+        logger.info("register");
         user.setFlag(0);
         user.setName(user.getName());
         user.setPassword(user.getPassword());
         return ResultUtil.success(userRepository.save(user));
     }
+
+
 }

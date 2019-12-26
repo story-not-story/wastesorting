@@ -1,12 +1,12 @@
 package school.wastesorting.enums;
 
 public enum ErrorCode {
-    SUCCESS(0, "success"),
-    LUCKMONEY_NOT_FOUND(1, "luckymoney is not found"),
-    PARAM_ERROR(2, "param error"),
     UNKNOWN_ERROR(-1, "unknown error"),
-    LITTLE_MONEY(3, "little money"),
-    MUCH_MONEY(4, "much money");
+    SUCCESS(0, "success"),
+    PASSWORD_ERROR(1, "username or password is wrong"),
+    USER_NOT_FOUND(2, "please register first"),
+    CAPTCHA_ERROR(3, "captcha is wrong"),
+    USER_EXISTS(4, "username already exists");
     private Integer code;
     private String message;
 

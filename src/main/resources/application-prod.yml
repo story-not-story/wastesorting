@@ -1,8 +1,4 @@
 server:
   port: 8081
   servlet:
-    context-path: /hujun
-limit:
-  maxValue: 100
-  minValue: 1
-  description: 最少${limit.minValue},最多${limit.maxValue}
+    context-path: /wastesorting
