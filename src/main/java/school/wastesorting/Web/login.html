@@ -129,8 +129,9 @@
                         
                         window.location.href="index.html";
                         $.ajax({
-                            url: "localhost:8081/register", //提价的路径
+                            url: "http://localhost:8081/wastesorting/register", //提价的路径
                             type: "post",       //提交方式
+                            contentType : 'application/json',
                             data:{"id":1, "username":username, "password":password},
                                 //向后台提交的数据
                             dataType: "JSON",       //规定请求成功后返回的数据
