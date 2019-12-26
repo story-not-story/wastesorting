@@ -24,16 +24,14 @@ public class UserController {
     @PostMapping(value = "/register", consumes = "application/json")
     public Result<User> register(@RequestBody User user){
         logger.info("register");
-        User user1 = userRepository.findByName(user.getName());
-        if (user1 != null) {
+        User user2 = userRepository.findByName(user.getName());
+        if (user2 != null) {
             return ResultUtil.fail(ErrorCode.USER_EXISTS);
         }
-        user.setFlag(0);
-        if (user.getFlag() != null) {
-            user.setFlag(user.getFlag());
+
+        if (user.getFlag() == null) {
+            user.setFlag(0);
         }
-        user.setName(user.getName());
-        user.setPassword(user.getPassword());
         userRepository.save(user);
         return ResultUtil.success();
     }

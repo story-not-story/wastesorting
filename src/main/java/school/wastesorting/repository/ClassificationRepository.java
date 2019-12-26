@@ -1,6 +1,7 @@
 package school.wastesorting.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import school.wastesorting.domain.FirstClass;
@@ -22,7 +23,7 @@ public interface ClassificationRepository extends JpaRepository<FirstClass, Inte
      * @param id
      * @return FirstClass
      */
-    @Query(value = "select f from FirstClass f,SecondClass s where s.id = :id and f.id = s.parentId limit 1")
+    @Query(value = "select f from FirstClass f,SecondClass s where s.id = :id and f.id = s.parentId")
     FirstClass findFirstBySecond(@Param(value = "id") Integer id);
     /**
      * 根据二级类目id查找三级类目
@@ -46,13 +47,5 @@ public interface ClassificationRepository extends JpaRepository<FirstClass, Inte
      */
     @Query(value = "select f.id from FirstClass f,SecondClass s,ThirdClass t where t.name = :name and f.id = s.parentId and s.id = t.parentId")
     Integer findFirstIdByThirdName(@Param(value = "name") String name);
-
-    /**
-     * 添加物品
-     * @param name
-     * @return
-     */
-    @Query(value = "insert into table ThirdClass values (name,parentId,null)")
-    void saveThirdClass(@Param(value = "name") String name, @Param(value = "parentId") Integer parentId);
 
 }
