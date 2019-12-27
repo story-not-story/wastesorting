@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Entity
 public class Config {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
     @Column(name = "configuration_value")

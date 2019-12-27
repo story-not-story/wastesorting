@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Entity
 public class ThirdClass {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "third_id")
     private Integer id;
     @Column(name = "object_name")

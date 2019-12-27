@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Entity
 public class SecondClass {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "second_id")
     private Integer id;
     @Column(name = "first_id")

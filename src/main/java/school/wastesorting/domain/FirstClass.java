@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Entity
 public class FirstClass {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "first_id")
     private Integer id;
     @Column(name = "first_class_name")

@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Entity
 public class User {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "name")
     @JsonProperty(value = "name")
