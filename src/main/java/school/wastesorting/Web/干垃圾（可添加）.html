@@ -49,16 +49,7 @@
     </script>
   </head>
   <body>
-  <script type="text/javascript">
-   function disp_prompt()
-      {
-        var name=prompt("输入的内容","");
-        if (name!=null && name!="") 
-        {
-          alert("你输入的是" + name);
-        }
-      }
-   </script>
+  
     <div id="base" class="">
 
       <!-- 垃圾分类组合 (组 合) -->
@@ -171,8 +162,8 @@
         </div>
 
         <!-- 常见干垃圾具体内容添加标记 (图片) -->
-        <div id="u178" class="ax_default image" data-label="常见干垃圾具体内容添加标记">
-          <img id="u178_img" class="img " onclick="disp_prompt()" src="images/有害垃圾（可添加）/废镍镉电池和废氧化汞电池添加标记_u64.svg"/>
+        <div  id="u178" class="ax_default image" data-label="常见干垃圾具体内容添加标记">
+          <img id="u178_img" class="img " onclick="disp_prompt()" src="images/有害垃圾（可添加）/废镍镉电池和废氧化汞电池添加标记_u64.svg"/><!-- **************************** -->
           <!-- Unnamed () -->
           <div id="u179" class="text" style="display: none; visibility: hidden">
             <p><span></span></p>
@@ -180,5 +171,118 @@
         </div>
       </div>
     </div>
+    <script type="text/javascript">
+   function disp_prompt()
+      {
+	   var parentId=21;
+        var name=prompt("输入的内容","");
+        if (name!=null && name!="") 
+        {
+          alert("你输入的是" + name);
+        }
+        $.ajax({
+            url: "localhost:8081/wastesorting/thing?name=name&parentId=parentId", //提价的路径
+            type: "get",       //提交方式
+            contentType : 'application/json',
+            //data:{"id":1, "username":username, "password":password},
+                //向后台提交的数据
+            dataType: "JSON",       //规定请求成功后返回的数据
+            success: function (data) {
+            	alert("提交成功"+JSON.stringify(message));
+                //请求成功之后进入该方法，data为成功后返回的数据
+            },
+            error: function (errorMsg) {
+            	alert("提交失败"+JSON.stringify(message));
+                //请求失败之后进入该方法，errorMsg为失败后返回的错误信息
+            }
+        });
+      }
+
+   var UrlParm = function() 
+	{ // url参数  
+ 	var data, index;  
+ 	(function init() {  
+   data = [];  
+   index = {};  
+   var u = window.location.search.substr(1);  
+   if (u != '') {  
+     var parms = decodeURIComponent(u).split('&');  
+     for (var i = 0, len = parms.length; i < len; i++) {  
+       if (parms[i] != '') {  
+         var p = parms[i].split("=");  
+         if (p.length == 1 || (p.length == 2 && p[1] == '')) {// p | p=  
+           data.push(['']);  
+           index[p[0]] = data.length - 1;  
+         } else if (typeof(p[0]) == 'undefined' || p[0] == '') { // =c | =  
+           data[0] = [p[1]];  
+         } else if (typeof(index[p[0]]) == 'undefined') { // c=aaa  
+           data.push([p[1]]);  
+           index[p[0]] = data.length - 1;  
+         } else {// c=aaa  
+           data[index[p[0]]].push(p[1]);  
+         }  
+       }  
+     }  
+   }  
+ })();  
+ return {  
+   // 获得参数,类似request.getParameter()  
+   parm : function(o) { // o: 参数名或者参数次序  
+     try {  
+       return (typeof(o) == 'number' ? data[o][0] : data[index[o]][0]);  
+     } catch (e) {  
+     }  
+   },  
+   //获得参数组, 类似request.getParameterValues()  
+   parmValues : function(o) { //  o: 参数名或者参数次序  
+     try {  
+       return (typeof(o) == 'number' ? data[o] : data[index[o]]);  
+     } catch (e) {}  
+   },  
+   //是否含有parmName参数  
+   hasParm : function(parmName) {  
+     return typeof(parmName) == 'string' ? typeof(index[parmName]) != 'undefined' : false;  
+   },  
+   // 获得参数Map ,类似request.getParameterMap()  
+   parmMap : function() {  
+     var map = {};  
+     try {  
+       for (var p in index) {  map[p] = data[index[p]];  }  
+     } catch (e) {}  
+     return map;  
+   }  
+ }  
+}();  
+var identity=UrlParm.parm("identity");
+var vs=0;
+alert("identity:"+identity);
+   
+   window.onload=function(){
+	   var myIdentity = identity; 
+	   
+	   if(myIdentity==1)
+		   vs=1;
+	   else
+	{
+		   vs=0;
+	   	   var ui = document.getElementById("u178"); 
+
+	   ui.style.display="none";
+	}
+	   console.log("可见性："+vs)
+	   
+   }
+   //alert("vs:"+vs);
+
+   function displayHideUI() 
+
+   { 
+
+   var ui = document.getElementById("u178"); 
+
+   ui.style.display="none"; 
+
+   }
+   </script>
   </body>
 </html>

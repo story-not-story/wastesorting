@@ -1,0 +1,305 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>查询页面</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/查询页面/styles.css" type="text/css" rel="stylesheet"/>
+    <script src="resources/scripts/jquery-1.7.1.min.js"></script>
+    <script src="resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
+    <script src="resources/scripts/axure/axQuery.js"></script>
+    <script src="resources/scripts/axure/globals.js"></script>
+    <script src="resources/scripts/axutils.js"></script>
+    <script src="resources/scripts/axure/annotation.js"></script>
+    <script src="resources/scripts/axure/axQuery.std.js"></script>
+    <script src="resources/scripts/axure/doc.js"></script>
+    <script src="data/document.js"></script>
+    <script src="resources/scripts/messagecenter.js"></script>
+    <script src="resources/scripts/axure/events.js"></script>
+    <script src="resources/scripts/axure/recording.js"></script>
+    <script src="resources/scripts/axure/action.js"></script>
+    <script src="resources/scripts/axure/expr.js"></script>
+    <script src="resources/scripts/axure/geometry.js"></script>
+    <script src="resources/scripts/axure/flyout.js"></script>
+    <script src="resources/scripts/axure/ie.js"></script>
+    <script src="resources/scripts/axure/model.js"></script>
+    <script src="resources/scripts/axure/repeater.js"></script>
+    <script src="resources/scripts/axure/sto.js"></script>
+    <script src="resources/scripts/axure/utils.temp.js"></script>
+    <script src="resources/scripts/axure/variables.js"></script>
+    <script src="resources/scripts/axure/drag.js"></script>
+    <script src="resources/scripts/axure/move.js"></script>
+    <script src="resources/scripts/axure/visibility.js"></script>
+    <script src="resources/scripts/axure/style.js"></script>
+    <script src="resources/scripts/axure/adaptive.js"></script>
+    <script src="resources/scripts/axure/tree.js"></script>
+    <script src="resources/scripts/axure/init.temp.js"></script>
+    <script src="files/查询页面/data.js"></script>
+    <script src="resources/scripts/axure/legacy.js"></script>
+    <script src="resources/scripts/axure/viewer.js"></script>
+    <script src="resources/scripts/axure/math.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body>
+    <div id="base" class="">
+
+      <!-- 垃圾分类组合 (组 合) -->
+      <div id="u232" class="ax_default" data-label="垃圾分类组合">
+
+        <!-- 绿色圈圈 (图片) -->
+        <div id="u233" class="ax_default image" data-label="绿色圈圈">
+          <img id="u233_img" class="img " src="images/index/u1.jpg"/>
+          <!-- Unnamed () -->
+          <div id="u234" class="text" style="display: none; visibility: hidden">
+            <p><span></span></p>
+          </div>
+        </div>
+
+        <!-- 垃圾分类 (矩形) -->
+        <div id="u235" class="ax_default label" data-label="垃圾分类">
+          <div id="u235_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u236" class="text" style="visibility: visible;">
+            <p><span>垃圾分类</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 查询框组合 (组 合) -->
+      <div id="u237" class="ax_default" data-label="查询框组合">
+        <!-- 用户输入文本框 (文本框) -->
+        <div id="u238" class="ax_default text_field" data-label="用户输入文本框">
+          <input id="u238_input" type="text" value=""/><!-- ********************************** -->
+        </div>
+
+        <!-- 用户提交查询按钮 (提交按钮) -->
+        <div id="u239" class="ax_default html_button" data-label="用户提交查询按钮">
+          <input id="u239_input" type="submit" value="查询" onclick="return search()"/><!-- ********************************** -->
+        </div>
+      </div>
+      
+      <script>
+      function search()
+            {
+                var btn=document.getElementById('u239_input');
+                var texts=document.getElementById('u238_input');                                                           
+                console.log(texts);
+                //console.log(str)
+                btn.onclick=function()
+                {                    
+                    var val=texts.value;
+                    if (val=="")
+                    {
+                        alert("请输入内容");
+                    }
+                    else
+                    {
+                        alert("用户正常输入！上传数据");
+                        $.ajax({
+                            url: "localhost:8081/wastesorting/search", //提价的路径
+                            type: "post",       //提交方式
+                            data:{"id":1, "text":texts},
+                                //向后台提交的数据
+                            dataType: "JSON",       //规定请求成功后返回的数据
+                            success: function (data) {
+                            	alert("提交成功"+JSON.stringify(message));
+                                //请求成功之后进入该方法，data为成功后返回的数据
+                            },
+                            error: function (errorMsg) {
+                            	alert("提交失败"+JSON.stringify(message));
+                                //请求失败之后进入该方法，errorMsg为失败后返回的错误信息
+                            }
+                        });
+                        window.location.href="/search/查询页面.html";
+                    }
+                    
+                }
+            }
+
+        </script>
+      <!-- 某种东西属于某种垃圾 组合 (组 合) -->
+      <div id="u240" class="ax_default" data-label="某种东西属于某种垃圾 组合">
+
+        <!-- 用户输入文字 (矩形) -->
+        <div id="u241" class="ax_default label" data-label="用户输入文字">
+          <img id="u241_img" class="img " src="images/查询页面/用户输入文字_u241.png"/>
+          <!-- Unnamed () -->
+          <div id="u242" class="text" style="display: none; visibility: hidden">
+            <p id="search-name"><span></span></p><!-- ********************************** -->
+          </div>
+        </div>
+
+        <!-- 属于 (矩形) -->
+        <div id="u243" class="ax_default label" data-label="属于">
+          <img id="u243_img" class="img " src="images/查询页面/属于_u243.png"/>
+          <!-- Unnamed () -->
+          <div id="u244" class="text" style="visibility: visible;">
+            <p><span>属于</span></p>
+          </div>
+        </div>
+
+        <!-- 具体垃圾类型 (矩形) -->
+        <div id="u245" class="ax_default label" data-label="具体垃圾类型">
+          <img id="u245_img" class="img " src="images/查询页面/用户输入文字_u241.png"/>
+          <!-- Unnamed () -->
+          <div id="u246" class="text" style="display: none; visibility: hidden">
+            <p id="search-result"><span></span></p><!-- ********************************** -->
+          </div>
+        </div>
+      </div>
+
+      <!-- 基本描述组合 (组 合) -->
+      <div id="u247" class="ax_default" data-label="基本描述组合">
+
+        <!-- 水滴形标记1 (正水滴形) -->
+        <div id="u248" class="ax_default marker" data-label="水滴形标记1">
+          <img id="u248_img" class="img " src="images/查询页面/水滴形标记1_u248.png"/>
+          <!-- Unnamed () -->
+          <div id="u249" class="text" style="display: none; visibility: hidden">
+            <p><span></span></p>
+          </div>
+        </div>
+
+        <!-- 基本描述 (矩形) -->
+        <div id="u250" class="ax_default label" data-label="基本描述">
+          <div id="u250_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u251" class="text" style="visibility: visible;">
+            <p><span>基本描述</span></p>
+          </div>
+        </div>
+
+        <!-- 基本描述文本框 (矩形) -->
+        <div id="u252" class="ax_default _文本段落" data-label="基本描述文本框">
+          <img id="u252_img" class="img " src="images/查询页面/基本描述文本框_u252.png"/>
+          <!-- Unnamed () -->
+          <div id="u253" class="text" style="display: none; visibility: hidden">
+            <p><span></span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 投放要求组合 (组 合) -->
+      <div id="u254" class="ax_default" data-label="投放要求组合">
+
+        <!-- 水滴形标记2 (正水滴形) -->
+        <div id="u255" class="ax_default marker" data-label="水滴形标记2">
+          <img id="u255_img" class="img " src="images/查询页面/水滴形标记1_u248.png"/>
+          <!-- Unnamed () -->
+          <div id="u256" class="text" style="display: none; visibility: hidden">
+            <p><span></span></p>
+          </div>
+        </div>
+
+        <!-- 投放要求 (矩形) -->
+        <div id="u257" class="ax_default label" data-label="投放要求">
+          <div id="u257_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u258" class="text" style="visibility: visible;">
+            <p><span>投放要求</span></p>
+          </div>
+        </div>
+
+        <!-- 投放要求文本框 (矩形) -->
+        <div id="u259" class="ax_default _文本段落" data-label="投放要求文本框">
+          <img id="u259_img" class="img " src="images/查询页面/投放要求文本框_u259.png"/>
+          <!-- Unnamed () -->
+          <div id="u260" class="text" style="display: none; visibility: hidden">
+            <p><span></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+    window.onload=function(){
+    	var name;
+    	$.ajax({
+            url: "localhost:8081/wastesorting/search?id=id&name=name", //提价的路径
+            type: "get",       //提交方式
+            contentType : 'application/json',
+           // data:{"id":1, "text":texts},
+                //向后台提交的数据
+            dataType: "JSON",       //规定请求成功后返回的数据
+            success: function (data) {
+            	alert("提交成功"+JSON.stringify(message));
+                //请求成功之后进入该方法，data为成功后返回的数据
+            },
+            error: function (errorMsg) {
+            	alert("提交失败"+JSON.stringify(message));
+                //请求失败之后进入该方法，errorMsg为失败后返回的错误信息
+            }
+        });
+    	document.getElementById("search-result").innerHTML = name;
+    	
+    }
+    
+    
+    var UrlParm = function() 
+	{ // url参数  
+	var data, index;  
+	(function init() {  
+  data = [];  
+  index = {};  
+  var u = window.location.search.substr(1);  
+  if (u != '') {  
+    var parms = decodeURIComponent(u).split('&');  
+    for (var i = 0, len = parms.length; i < len; i++) {  
+      if (parms[i] != '') {  
+        var p = parms[i].split("=");  
+        if (p.length == 1 || (p.length == 2 && p[1] == '')) {// p | p=  
+          data.push(['']);  
+          index[p[0]] = data.length - 1;  
+        } else if (typeof(p[0]) == 'undefined' || p[0] == '') { // =c | =  
+          data[0] = [p[1]];  
+        } else if (typeof(index[p[0]]) == 'undefined') { // c=aaa  
+          data.push([p[1]]);  
+          index[p[0]] = data.length - 1;  
+        } else {// c=aaa  
+          data[index[p[0]]].push(p[1]);  
+        }  
+      }  
+    }  
+  }  
+})();  
+return {  
+  // 获得参数,类似request.getParameter()  
+  parm : function(o) { // o: 参数名或者参数次序  
+    try {  
+      return (typeof(o) == 'number' ? data[o][0] : data[index[o]][0]);  
+    } catch (e) {  
+    }  
+  },  
+  //获得参数组, 类似request.getParameterValues()  
+  parmValues : function(o) { //  o: 参数名或者参数次序  
+    try {  
+      return (typeof(o) == 'number' ? data[o] : data[index[o]]);  
+    } catch (e) {}  
+  },  
+  //是否含有parmName参数  
+  hasParm : function(parmName) {  
+    return typeof(parmName) == 'string' ? typeof(index[parmName]) != 'undefined' : false;  
+  },  
+  // 获得参数Map ,类似request.getParameterMap()  
+  parmMap : function() {  
+    var map = {};  
+    try {  
+      for (var p in index) {  map[p] = data[index[p]];  }  
+    } catch (e) {}  
+    return map;  
+  }  
+}  
+}();  
+var search-name=UrlParm.parm("search-name");
+alert(search-name);
+document.getElementById("search-name").innerHTML = search-name;
+    </script>
+  </body>
+</html>

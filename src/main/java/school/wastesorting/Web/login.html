@@ -127,9 +127,9 @@
                         return false;
                     }else { //输入正确时                       	
                         
-                        window.location.href="index.html";
+                        window.location.href="index.html?identity=1";
                         $.ajax({
-                            url: "http://localhost:8081/wastesorting/register", //提价的路径
+                            url: "localhost:8081/wastesorting/login", //提价的路径
                             type: "post",       //提交方式
                             contentType : 'application/json',
                             data:{"id":1, "username":username, "password":password},
@@ -151,7 +151,17 @@
                 </script>
                 <div class="error"><span>+</span></div>
             </form>
-           
+           <button type="button" class="submit_button" onclick="return visiter()">游客登录</button>
+           <script type="text/javascript">
+           var id=0;
+                function visiter(){   
+                		id=2;
+                        window.location.href="index.html?identity="+id;
+                        alert("登录成功,正在跳转...");
+                        return false;
+                    }
+                console.log(id);
+                </script>
         </div>
         
 		
