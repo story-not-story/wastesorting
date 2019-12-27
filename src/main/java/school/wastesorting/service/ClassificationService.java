@@ -39,6 +39,7 @@ public class ClassificationService {
             JSONArray thirdArray = new JSONArray();
             thirdList.forEach(o -> thirdArray.add(o.getName()));
             JSONObject object = new JSONObject();
+            object.put("secondId", s.getId());
             object.put(s.getName(), thirdArray);
             jsonArray.add(object);
         });
