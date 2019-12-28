@@ -323,40 +323,36 @@ alert(identity);
        function search()
             {
                 var btn=document.getElementById('u6_input');
-                var texts=document.getElementById('u5_input');                                                           
+                var texts=document.getElementById('u5_input');
                 console.log(texts);
                 //console.log(str)
                 btn.onclick=function()
-                {                    
+                {
                     var val=texts.value;
                     if (val=="")
                     {
                         alert("请输入内容");
                     }
                     else
-                    {              
+                    {
                         alert("用户正常输入！上传数据");
                         window.location.href="/search/查询页面.html";
                         $.ajax({
-                            url: "localhost:8081/wastesorting/search?id=1&name=val", //提价的路径
-                            window.location.href = url;
+                            url: "http://localhost:8081/wastesorting/search?name="+val, //提价的路径
                             type: "get",       //提交方式
-                            contentType : 'application/json',
-                           // data:{"id":1, "text":texts},
-                                //向后台提交的数据
                             dataType: "JSON",       //规定请求成功后返回的数据
                             success: function (data) {
-                            	alert("提交成功"+JSON.stringify(message));
+                            	alert("提交成功"+JSON.stringify(data));
                                 //请求成功之后进入该方法，data为成功后返回的数据
                             },
                             error: function (errorMsg) {
-                            	alert("提交失败"+JSON.stringify(message));
+                            	alert("提交失败"+JSON.stringify(errorMsg));
                                 //请求失败之后进入该方法，errorMsg为失败后返回的错误信息
                             }
                         });
                         return false;
                     }
-                    
+
                 }
             }
 
