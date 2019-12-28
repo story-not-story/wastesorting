@@ -19,6 +19,7 @@ import school.wastesorting.util.ResultUtil;
 @ControllerAdvice
 public class ExceptionHandle {
     private static final Logger logger = LoggerFactory.getLogger(ExceptionHandle.class);
+
     @ExceptionHandler(Exception.class)
     @ResponseBody
     public Result handle(Exception e){

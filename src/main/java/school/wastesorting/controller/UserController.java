@@ -15,10 +15,13 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-
-
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
+    /**
+     * 注册用户
+     * @param user
+     * @return Result<User>
+     */
     @PostMapping(value = "/register", consumes = "application/json")
     public Result<User> register(@RequestBody User user){
         logger.info("register");
@@ -34,6 +37,11 @@ public class UserController {
         return ResultUtil.success();
     }
 
+    /**
+     * 登陆用户
+     * @param user
+     * @return Result<User>
+     */
     @PostMapping(value = "/login", consumes = "application/json")
     public Result<User> login(@RequestBody User user){
         logger.info("login");

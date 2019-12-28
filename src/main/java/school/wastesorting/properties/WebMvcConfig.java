@@ -5,13 +5,13 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import school.wastesorting.interceptor.CrossInterceptor;
 import school.wastesorting.interceptor.LoginInterceptor;
-
 import javax.annotation.Resource;
 
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
     @Resource
     private CrossInterceptor crossInterceptor;
+
     @Resource
     private LoginInterceptor loginInterceptor;
 
@@ -22,5 +22,4 @@ public class WebMvcConfig implements WebMvcConfigurer {
         // 校验token的拦截器
         registry.addInterceptor(loginInterceptor).addPathPatterns("/wastesorting/thing/**");
     }
-
 }

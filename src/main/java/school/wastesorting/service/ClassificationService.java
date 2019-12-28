@@ -12,7 +12,6 @@ import school.wastesorting.domain.ThirdClass;
 import school.wastesorting.enums.ErrorCode;
 import school.wastesorting.repository.ClassificationRepository;
 import school.wastesorting.util.ResultUtil;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +20,11 @@ public class ClassificationService {
     @Autowired
     private ClassificationRepository classificationRepository;
 
+    /**
+     * 按照顶级类目id查找顶级类目下所有类目信息
+     * @param id
+     * @return Result<JSONObject>
+     */
     @Transactional(rollbackFor = Exception.class)
     public Result<JSONObject> getFirstClass(Integer id){
         Optional<FirstClass> optional = classificationRepository.findById(id);
@@ -47,6 +51,11 @@ public class ClassificationService {
         return ResultUtil.success(jsonObject);
     }
 
+    /**
+     * 按照物品名字查找所属顶级类目下所有类目信息
+     * @param name
+     * @return Result<JSONObject>
+     */
     @Transactional(rollbackFor = Exception.class)
     public Result<JSONObject> search(String name){
         Integer id = classificationRepository.findFirstIdByThirdName(name);

@@ -3,7 +3,6 @@ package school.wastesorting.interceptor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,8 +16,9 @@ public class LoginInterceptor implements HandlerInterceptor {
         response.setHeader("Access-Control-Max-Age", "86400");
         response.setHeader("Access-Control-Allow-Headers", "*");
 
-        // 如果是OPTIONS则结束请求
-        if (request.getHeader("token") != null && !request.getHeader("token").isEmpty()) {
+        // 如果请求头不带token则认为用户未登陆，禁止添加物品
+        String TOKEN = "token";
+        if (request.getHeader(TOKEN) != null && !request.getHeader(TOKEN).isEmpty()) {
             response.setStatus(HttpStatus.NO_CONTENT.value());
             return false;
         }

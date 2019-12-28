@@ -4,6 +4,7 @@ import school.wastesorting.enums.ErrorCode;
 
 public class UserException extends RuntimeException {
     private Integer code;
+
     public UserException(ErrorCode errorCode){
         super(errorCode.getMessage());
         this.code = errorCode.getCode();

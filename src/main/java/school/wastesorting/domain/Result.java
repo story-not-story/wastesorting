@@ -8,7 +8,9 @@ package school.wastesorting.domain;
  */
 public class Result<T> {
     private Integer code;
+
     private String message;
+
     private T data;
 
     public Integer getCode() {

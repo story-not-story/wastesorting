@@ -16,6 +16,10 @@ public class HttpAspect {
     @Pointcut("execution(public * school.wastesorting.controller.*.*(..))")
     public void log(){}
 
+    /**
+     * 打印请求日志
+     * @param joinPoint
+     */
     @Before("log()")
     public void before(JoinPoint joinPoint){
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
