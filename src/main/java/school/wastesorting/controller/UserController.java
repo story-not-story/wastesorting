@@ -8,7 +8,6 @@ import school.wastesorting.domain.User;
 import school.wastesorting.domain.Result;
 import school.wastesorting.enums.ErrorCode;
 import school.wastesorting.repository.UserRepository;
-import school.wastesorting.service.UserService;
 import school.wastesorting.util.ResultUtil;
 
 @RestController
@@ -16,8 +15,7 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private UserService userService;
+
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
