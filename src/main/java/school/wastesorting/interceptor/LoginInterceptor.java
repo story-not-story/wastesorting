@@ -17,8 +17,8 @@ public class LoginInterceptor implements HandlerInterceptor {
         response.setHeader("Access-Control-Allow-Headers", "*");
 
         // 如果请求头不带token则认为用户未登陆，禁止添加物品
-        String TOKEN = "token";
-        if (request.getHeader(TOKEN) != null && !request.getHeader(TOKEN).isEmpty()) {
+        String token = "token";
+        if (request.getHeader(token) != null && !request.getHeader(token).isEmpty()) {
             response.setStatus(HttpStatus.NO_CONTENT.value());
             return false;
         }
