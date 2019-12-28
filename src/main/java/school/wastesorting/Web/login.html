@@ -32,64 +32,52 @@
                 code += random[index];//根据索引取得随机数加到code上   
             }   
             checkCode.value = code;//把code值赋给验证码   
-        } 
+        }
+        function visiter(){
+            id=2;
+            window.location.href="index.html?identity="+id;
+            alert("登录成功,正在跳转...");
+            return false;
+        }
         //校验验证码   
         function validate(){
-			
-			var password=document.getElementById("password").value;
-			var username=document.getElementById("username").value;
-			if(username!="123"){
-				alert("用户名不正确！");
-				return false;
-			}
-			if(password!="123456"){
-				alert("密码不正确！");
-				return false;
-			}
-			
-            var inputCode = document.getElementById("Captcha").value.toUpperCase(); //取得输入的验证码并转化为大写         
-            if(inputCode.length <= 0) { //若输入的验证码长度为0   
-                alert("请输入验证码！"); //则弹出请输入验证码   
-                return false;
-            }else if(inputCode != code ) { //若输入的验证码与产生的验证码不一致时   
-                alert("验证码输入错误！"); //则弹出验证码输入错误   
-                createCode();//刷新验证码   
-                document.getElementById("Captcha").value = "";//清空文本框 
-                return false;
-            }else { //输入正确时   
-            	
-                alert("登录成功,正在跳转...");
-                window.location.href="index.html";
-                $.ajax({
-                    url: "login.html", //提价的路径
-                    type: "post",       //提交方式
-                    data:{"id":1, "username":username, "password":password},
-                        //向后台提交的数据
-                    dataType: "JSON",       //规定请求成功后返回的数据
-                    success: function (data) {
-                    	alert("提交成功"+JSON.stringify(message));
-                        //请求成功之后进入该方法，data为成功后返回的数据
-                    },
-                    error: function (errorMsg) {
-                    	alert("提交失败"+JSON.stringify(message));
-                        //请求失败之后进入该方法，errorMsg为失败后返回的错误信息
-                    }
-                });
+        var password=document.getElementById("password").value;
+        var username=document.getElementById("username").value;
+         var inputCode = document.getElementById("Captcha").value.toUpperCase(); //取得输入的验证码并转化为大写
+         if(inputCode.length <= 0) { //若输入的验证码长度为0
+             alert("请输入验证码！"); //则弹出请输入验证码
+             return false;
+         }else if(inputCode != code ) { //若输入的验证码与产生的验证码不一致时
+             alert("验证码输入错误！"); //则弹出验证码输入错误
+             createCode();//刷新验证码
+             document.getElementById("Captcha").value = "";//清空文本框
+             return false;
+         }else { //输入正确时
 
-            } 
-            return true;
-        } 
-        
-        
-        
-        function agree(){
-            if(document.getElementById('cb').checked){
-            	alert("您已同意服务条款！");return true; }
-            
-         else
-        	 alert("您尚未同意服务条款！");
-			return false;  
-       }   
+
+             $.ajax({
+                 url: "http://localhost:8081/wastesorting/login", //提交的路径
+                 type: "post",       //提交方式
+                 contentType: "application/json;charset=utf-8",
+                 processData: false,
+                 data: JSON.stringify({"name":username, "password":password}),
+                     //向后台提交的数据
+                 dataType: "json",       //规定请求成功后返回的数据
+                 success: function (data) {
+                   alert("提交成功"+JSON.stringify(data));
+                     //请求成功之后进入该方法，data为成功后返回的数据
+                 },
+                 error: function (errorMsg) {
+                   alert("提交失败"+JSON.stringify(errorMsg));
+                     //请求失败之后进入该方法，errorMsg为失败后返回的错误信息
+                 }
+             });
+
+             alert("登录成功,正在跳转...");
+             window.location.href="index.html?identity=1";
+             return false;
+         }
+     }
         </script> 
 
     </head>
@@ -104,64 +92,9 @@
                 <input type="Captcha" class="Captcha" id="Captcha" name="Captcha" placeholder="请输入验证码！">
 				<input type="button" id="code" onclick="createCode()" style="height:40px;width:120px" title='点击更换验证码' /> 
                 <button type="submit" class="submit_button" onclick="return validate()">登录</button>
-                <script type="text/javascript">
-                function validate(){        			
-        			var password=document.getElementById("password").value;
-        			var username=document.getElementById("username").value;
-        			if(username!="123"){
-        				alert("用户名不正确！");
-        				return false;
-        			}
-        			if(password!="123456"){
-        				alert("密码不正确！");
-        				return false;
-        			}        			
-                    var inputCode = document.getElementById("Captcha").value.toUpperCase(); //取得输入的验证码并转化为大写         
-                    if(inputCode.length <= 0) { //若输入的验证码长度为0   
-                        alert("请输入验证码！"); //则弹出请输入验证码   
-                        return false;
-                    }else if(inputCode != code ) { //若输入的验证码与产生的验证码不一致时   
-                        alert("验证码输入错误！"); //则弹出验证码输入错误   
-                        createCode();//刷新验证码   
-                        document.getElementById("Captcha").value = "";//清空文本框 
-                        return false;
-                    }else { //输入正确时                       	
-                        
-                        window.location.href="index.html?identity=1";
-                        $.ajax({
-                            url: "localhost:8081/wastesorting/login", //提价的路径
-                            type: "post",       //提交方式
-                            contentType : 'application/json',
-                            data:{"id":1, "username":username, "password":password},
-                                //向后台提交的数据
-                            dataType: "JSON",       //规定请求成功后返回的数据
-                            success: function (data) {
-                            	alert("提交成功"+JSON.stringify(message));
-                                //请求成功之后进入该方法，data为成功后返回的数据
-                            },
-                            error: function (errorMsg) {
-                            	alert("提交失败"+JSON.stringify(message));
-                                //请求失败之后进入该方法，errorMsg为失败后返回的错误信息
-                            }
-                        });
-                        alert("登录成功,正在跳转...");
-                        return false;
-                    }
-                }
-                </script>
                 <div class="error"><span>+</span></div>
             </form>
            <button type="button" class="submit_button" onclick="return visiter()">游客登录</button>
-           <script type="text/javascript">
-           var id=0;
-                function visiter(){   
-                		id=2;
-                        window.location.href="index.html?identity="+id;
-                        alert("登录成功,正在跳转...");
-                        return false;
-                    }
-                console.log(id);
-                </script>
         </div>
         
 		

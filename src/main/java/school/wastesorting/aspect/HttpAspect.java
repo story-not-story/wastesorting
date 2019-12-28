@@ -13,13 +13,14 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 public class HttpAspect {
     private static final Logger logger = LoggerFactory.getLogger(HttpAspect.class);
 
-    @Pointcut("execution(public * school.wastesorting.controller.UserController.*(..))")
+    @Pointcut("execution(public * school.wastesorting.controller.*.*(..))")
     public void log(){}
 
     @Before("log()")
     public void before(JoinPoint joinPoint){
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         logger.info("url={}", attributes.getRequest().getRequestURL());
+        logger.info("content-type={}", attributes.getRequest().getContentType());
         logger.info("method={}",attributes.getRequest().getMethod());
         logger.info("class_name={}", joinPoint.getSignature().getDeclaringTypeName());
         logger.info("args={}", joinPoint.getArgs());
