@@ -1,11 +1,5 @@
 package school.wastesorting.domain;
 
-/**
- * Demo class
- *
- * @author hujun
- * @date 2019/12/26
- */
 public class Result<T> {
     private Integer code;
 

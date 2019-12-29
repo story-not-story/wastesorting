@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import school.wastesorting.domain.Result;
 import school.wastesorting.domain.ThirdClass;
+import school.wastesorting.enums.ErrorCode;
 import school.wastesorting.repository.ThirdClassRepository;
 import school.wastesorting.service.ClassificationService;
 import school.wastesorting.util.ResultUtil;
@@ -34,6 +35,9 @@ public class ClassificationController {
      */
     @PostMapping(value = "/thing", consumes = "application/json")
     public Result<ThirdClass> getFirstClass(@RequestBody ThirdClass thirdClass){
+        if (thirdClassRepository.findByNameParentId(thirdClass.getName(), thirdClass.getParentId()) != null) {
+            return ResultUtil.fail(ErrorCode.THING_EXISTS);
+        }
         ThirdClass thirdClass2 = new ThirdClass();
         thirdClass2.setParentId(thirdClass.getParentId());
         thirdClass2.setName(thirdClass.getName());
