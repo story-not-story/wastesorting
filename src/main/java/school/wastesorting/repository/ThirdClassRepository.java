@@ -7,9 +7,10 @@ import school.wastesorting.domain.ThirdClass;
 
 public interface ThirdClassRepository extends JpaRepository<ThirdClass, Integer> {
     /**
-     * 根据物品名查找物品
+     * 按照物品名查找物品
      * @param name
-     * @return User
+     * @param parentId
+     * @return ThirdClass
      */
     @Query(value = "from ThirdClass where name = :name and parentId = :parentId")
     ThirdClass findByNameParentId(@Param(value = "name") String name, @Param(value = "parentId") Integer parentId);
