@@ -14,10 +14,13 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "ajv": "^5.5.2",
+    "ajv-keywords": "^2.1.1",
     "fastclick": "^1.0.6",
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2",
     "vue": "^2.5.2",
+    "vue-awesome-swiper": "^2.6.7",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
