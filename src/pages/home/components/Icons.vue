@@ -70,27 +70,29 @@ export default {
     width: 100%
     height: 0
     padding-bottom: 50%
-  .icon
-    width: 25%
-    height: 0
-    padding-bottom: 25%
-    float: left
-    overflow: hidden
-    position: relative
-    .img-content
-      width: 80%
-      position: absolute
-      top: 0
-      right: 0
-      bottom: 0.02rem
-      left: 0
-      margin: 0 auto
-    .img-desc
-      text-align: center
-      position: absolute
-      right: 0
-      bottom: 0
-      left: 0
-      line-height: .4rem
-      ellipsis()
+  .icons
+    margin-top: .1rem
+    .icon
+      width: 25%
+      height: 0
+      padding-bottom: 25%
+      float: left
+      overflow: hidden
+      position: relative
+      .img-content
+        width: 80%
+        position: absolute
+        top: 0
+        right: 0
+        bottom: 0.02rem
+        left: 0
+        margin: 0 auto
+      .img-desc
+        text-align: center
+        position: absolute
+        right: 0
+        bottom: 0
+        left: 0
+        line-height: .4rem
+        ellipsis()
 </style>
