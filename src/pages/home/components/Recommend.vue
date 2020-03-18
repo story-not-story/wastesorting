@@ -2,7 +2,7 @@
   <div>
     <div class="title">热门推荐</div>
     <ul>
-      <li class="img-wrapper" v-for="(item,index) in recommendList" :key="index">
+      <li class="img-wrapper" v-for="item in list" :key="item.id">
         <img class="img-content" :src="item.imgUrl"/>
         <div class="img-info">
           <p class="img-title" v-text="item.title"></p>
@@ -16,18 +16,8 @@
 <script>
 export default {
   name: 'HomeRecommend',
-  data() {
-    return {
-      recommendList: [{
-        imgUrl: require('@/assets/img/yandangshan.jpeg'),
-        title: '雁荡山雁荡山雁荡山雁荡山雁荡山雁荡山雁荡山雁荡山雁荡山',
-        desc: '4A景区4A景区4A景区4A景区4A景区4A景区4A景区4A景区'
-      }, {
-        imgUrl: require('@/assets/img/putuoshan.jpeg'),
-        title: '普陀山',
-        desc: '4A景区'
-      }]
-    }
+  props: {
+    list: Array
   }
 }
 </script>

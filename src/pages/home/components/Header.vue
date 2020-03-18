@@ -7,13 +7,16 @@
       <span class="iconfont search-icon">&#xe8b9;</span>input
     </div>
     <div class="header-right">
-      <span class="iconfont arrow-icon">&#xe6aa;</span>
+      {{this.city}}<span class="iconfont arrow-icon">&#xe6aa;</span>
     </div>
   </div>
 </template>
 <script>
 export default{
-  name: 'Header'
+  name: 'Header',
+  props: {
+    city: String
+  }
 }
 </script>
 <style lang="stylus" scoped>

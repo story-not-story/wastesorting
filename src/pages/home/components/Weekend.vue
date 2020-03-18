@@ -2,7 +2,7 @@
   <div>
     <div class="title">周末去哪儿</div>
     <ul>
-      <li v-for="(item,index) in weekendList" :key="index">
+      <li v-for="item in list" :key="item.id">
         <div class="img-wrapper">
           <img class="img-content" :src="item.imgUrl"/>
         </div>
@@ -17,18 +17,8 @@
 <script>
 export default {
   name: 'HomeWeekend',
-  data() {
-    return {
-      weekendList: [{
-        imgUrl: require('@/assets/img/yandangshan.jpeg'),
-        title: '雁荡山雁荡山雁荡山雁荡山雁荡山雁荡山雁荡山雁荡山雁荡山',
-        desc: '4A景区4A景区4A景区4A景区4A景区4A景区4A景区4A景区'
-      }, {
-        imgUrl: require('@/assets/img/putuoshan.jpeg'),
-        title: '普陀山',
-        desc: '4A景区'
-      }]
-    }
+  props: {
+    list: Array
   }
 }
 </script>

@@ -1,11 +1,11 @@
 <template>
   <div class="icons">
-    <swiper>
+    <swiper :options="swiperOption">
     <!-- slides -->
       <swiper-slide v-for="(page,index) in pages" :key="index">
         <div class="icon" v-for="item in page" :key="item.id">
           <img class="img-content" :src="item.imgUrl"/>
-          <p class="img-desc">热门景点热门景点热门景点热门景点热门景点热门景点</p>
+          <p class="img-desc" v-text="item.desc"></p>
         </div>
       </swiper-slide>
       <!-- Optional controls -->
@@ -16,42 +16,20 @@
 <script>
 export default {
   name: 'HomeIcons',
+  props: {
+    list: Array
+  },
   data() {
     return {
-      iconList: [{
-        id: '001',
-        imgUrl: require('@/assets/img/landscape.png')
-      }, {
-        id: '002',
-        imgUrl: require('@/assets/img/landscape.png')
-      }, {
-        id: '003',
-        imgUrl: require('@/assets/img/landscape.png')
-      }, {
-        id: '004',
-        imgUrl: require('@/assets/img/landscape.png')
-      }, {
-        id: '005',
-        imgUrl: require('@/assets/img/landscape.png')
-      }, {
-        id: '006',
-        imgUrl: require('@/assets/img/landscape.png')
-      }, {
-        id: '007',
-        imgUrl: require('@/assets/img/landscape.png')
-      }, {
-        id: '008',
-        imgUrl: require('@/assets/img/landscape.png')
-      }, {
-        id: '009',
-        imgUrl: require('@/assets/img/landscape.png')
-      }]
+      swiperOption: {
+        autoplay: false
+      }
     }
   },
   computed: {
     pages() {
       const pages = []
-      this.iconList.forEach((item, index) => {
+      this.list.forEach((item, index) => {
         const page = Math.floor(index / 8)
         if (!pages[page]) {
           pages[page] = []
