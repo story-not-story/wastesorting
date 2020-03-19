@@ -1,14 +1,14 @@
 <template>
   <div id="app">
-    <!-- 当前路径所对应的页面 -->
-    <router-view/>
+  <!-- 当前路径所对应的页面 -->
+    <keep-alive>
+      <router-view/>
+    </keep-alive>
   </div>
 </template>
-
 <script>
 export default {
   name: 'App'
 }
 </script>
-
 <style></style>
