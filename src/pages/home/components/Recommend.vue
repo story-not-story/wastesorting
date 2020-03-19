@@ -53,5 +53,5 @@ export default {
         margin-top: .2rem
         background: #ff9300
         padding: 0 0.15rem
-        border-radius: 0.06rem
+        border-radius: $radius
 </style>

@@ -6,16 +6,21 @@
     <div class="header-input">
       <span class="iconfont search-icon">&#xe8b9;</span>input
     </div>
-    <div class="header-right">
-      {{this.city}}<span class="iconfont arrow-icon">&#xe6aa;</span>
-    </div>
+    <router-link to="/city">
+      <div class="header-right">
+        {{this.cityname}}<span class="iconfont arrow-icon">&#xe6aa;</span>
+      </div>
+    </router-link>
   </div>
 </template>
 <script>
+import { mapState } from 'vuex'
 export default{
   name: 'Header',
-  props: {
-    city: String
+  computed: {
+    ...mapState({
+      cityname: 'city'
+    })
   }
 }
 </script>
@@ -23,7 +28,8 @@ export default{
 @import '~styles/variables.styl'
   .header
     display: flex
-    line-heigth: .86rem
+    align-items: center
+    line-heigth: $height
     background: $bgcolor
     color: #fff
     magin: 0
@@ -32,7 +38,6 @@ export default{
       float: left
       .back-icon
         margin-left: .15rem
-        margin-top: .18rem
         text-align: center
         font-size: .4rem
     .header-input
@@ -45,12 +50,12 @@ export default{
       padding-top: 0.16rem
       background: #fff
       color: #ccc
-      border-radius: .1rem
+      border-radius: $radius
     .header-right
       width: 1.24rem
       float: right
       text-align: center
-      padding-top: 0.25rem
+      color: #fff
       .arrow-icon
         margin-left: -.04rem
         font-size: .24rem

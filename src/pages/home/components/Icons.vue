@@ -8,8 +8,6 @@
           <p class="img-desc" v-text="item.desc"></p>
         </div>
       </swiper-slide>
-      <!-- Optional controls -->
-      <div class="swiper-pagination"  slot="pagination"></div>
     </swiper>
   </div>
 </template>
@@ -44,7 +42,7 @@ export default {
 <style lang="stylus" scoped>
 @import '~styles/mixins.styl'
 @import '~styles/variables.styl'
-  .icons >>> .swiper-container
+  .icons >>> .swiper-slide
     width: 100%
     height: 0
     padding-bottom: 50%
