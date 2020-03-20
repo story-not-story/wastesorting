@@ -27,7 +27,6 @@ export default{
       for (let i in this.city) {
         letters.push(i)
       }
-      console.log(letters)
       return letters
     }
   },
@@ -35,7 +34,7 @@ export default{
     handleLetterClick(e) {
       this.$emit('change', e.target.innerText)
     },
-    handleTouchStart(e) {
+    handleTouchStart() {
       this.touchStatus = true
     },
     handleTouchMove(e) {
@@ -52,7 +51,7 @@ export default{
         }, 16)
       }
     },
-    handleTouchEnd(e) {
+    handleTouchEnd() {
       this.touchStatus = false
     }
   }

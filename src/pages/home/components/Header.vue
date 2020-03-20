@@ -46,7 +46,7 @@ export default{
       line-heigth: .64rem
       margin-top: .12rem
       margin-left: .2rem
-      padding-left: .2rem
+      padding-left: $pl
       padding-top: 0.16rem
       background: #fff
       color: #ccc

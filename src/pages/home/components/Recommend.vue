@@ -7,7 +7,9 @@
         <div class="img-info">
           <p class="img-title" v-text="item.title"></p>
           <p class="img-desc" v-text="item.desc"></p>
-          <button class="btn">查看详情</button>
+          <router-link :to="'/detail/' + item.id">
+            <button class="btn">查看详情</button>
+          </router-link>
         </div>
       </li>
     </ul>

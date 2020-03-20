@@ -103,5 +103,5 @@ export default{
     .itemlist
       .item
         line-height: $height
-        padding-left: .2rem
+        padding-left: $pl
 </style>
