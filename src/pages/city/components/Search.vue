@@ -48,6 +48,9 @@ export default{
       }
     })
   },
+  activated() {
+    this.searchcity = ''
+  },
   watch: {
     searchcity() {
       const result = []
