@@ -17,7 +17,9 @@ export default {
   },
   methods: {
     handleScroll() {
+      console.log('scroll')
       const top = document.documentElement.scrollTop
+      console.log(top)
       if (top > 60) {
         let opacity = top / 140
         this.opacityStyle.opacity = opacity > 1 ? 1 : opacity
@@ -27,10 +29,10 @@ export default {
       }
     }
   },
-  activated() {
+  mounted() {
     window.addEventListener('scroll', this.handleScroll)
   },
-  deactivated() {
+  destroyed() {
     window.removeEventListener('scroll', this.handleScroll)
   }
 }
